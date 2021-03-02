@@ -1,0 +1,128 @@
+<body></body>
+<script src="/three2.js"></script>
+<script>
+  // The "scene" is where stuff in our game will happen:
+  var scene = new THREE.Scene();
+  var flat = {flatShading: true};
+  var light = new THREE.AmbientLight('white', 0.8);
+  scene.add(light);
+
+  // The "camera" is what sees the stuff:
+  var aspectRatio = window.innerWidth / window.innerHeight;
+  var camera = new THREE.PerspectiveCamera(75, aspectRatio, 1, 10000);
+  camera.position.z = 500;
+  scene.add(camera);
+
+  // The "renderer" draws what the camera sees onto the screen:
+  var renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+var tablero = new THREE.CubeGeometry(250,10,200);
+var pata = new THREE.CubeGeometry(10,200,10);
+var material = new THREE.MeshPhongMaterial({color:'brown'});
+var tablero_flat = new THREE.Mesh(tablero, material);
+var pata1 = new THREE.Mesh(pata, material);
+var pata2 = new THREE.Mesh(pata, material);
+var pata3 = new THREE.Mesh(pata, material);
+var pata4 = new THREE.Mesh(pata, material);
+
+scene.add(tablero_flat);
+scene.add(pata1);
+scene.add(pata2);
+scene.add(pata3);
+scene.add(pata4);
+tablero_flat.position.set(0,0,0)
+pata1.position.set(-100,-100,80);
+pata2.position.set(100,-100,80);
+pata3.position.set(-100,-100,-100);
+pata4.position.set(100,-100,-100);
+camera.lookAt(tablero_flat.position)
+camera.position.set(0,100,500)
+
+
+
+
+var shape = new THREE.SphereGeometry(20,50,50);
+var shape_small = new THREE.SphereGeometry(20,50,50);
+var cover = new THREE.MeshPhongMaterial({color : 'orange'});
+var ball = new THREE.Mesh(shape, cover);
+var ball_1 = new THREE.Mesh(shape, cover);
+var ball_2= new THREE.Mesh(shape, cover);
+var ball_3 = new THREE.Mesh(shape, cover);
+var ball_4 = new THREE.Mesh(shape, cover);
+var ball_5 = new THREE.Mesh(shape, cover);
+var ball_6 = new THREE.Mesh(shape, cover);
+ball.position.set(0,45,50);
+ball_1.position.set(-30,45,40);
+ball_2.position.set(-50,45,30);
+ball_3.position.set(-70,45,0);
+ball_4.position.set(30,45,40);
+ball_5.position.set(50,45,30);
+ball_6.position.set(70,45,0);
+
+scene.add(ball);
+scene.add(ball_1);
+scene.add(ball_2);
+scene.add(ball_3);
+scene.add(ball_4);
+scene.add(ball_5);
+scene.add(ball_6);
+
+var barra = new THREE.CylinderGeometry(100,20,50,50);
+var flat = new THREE.MeshNormalMaterial(flat);
+var cilindro_flat = new THREE.Mesh(barra, flat);
+scene.add(cilindro_flat);
+cilindro_flat.rotation.set(0,0,0);
+
+
+var barra = new THREE.CylinderGeometry(20,20,400,50);
+var flat = new THREE.MeshPhongMaterial({color:'brown'});
+var cilindro_flat = new THREE.Mesh(barra, flat);
+scene.add(cilindro_flat);
+cilindro_flat.rotation.set(0,0,0);
+cilindro_flat.position.set(0,200,0);
+
+var barra = new THREE.CylinderGeometry(20,250,200,50);
+var flat = new THREE.MeshPhongMaterial({color: 'green'});
+var cilindro_flat = new THREE.Mesh(barra, flat);
+;
+scene.add(cilindro_flat);
+cilindro_flat.rotation.set(0,0,0);
+cilindro_flat.position.set(0,300,0);
+
+
+
+var plano = new THREE.PlaneGeometry(100,100);
+var flat = new THREE.MeshNormalMaterial(flat);
+var base_flat = new THREE.Mesh(plano,flat);
+var lado1_flat = new THREE.Mesh(plano,flat);
+var lado2_flat = new THREE.Mesh(plano,flat);
+var lado3_flat = new THREE.Mesh(plano,flat);
+var lado4_flat = new THREE.Mesh(plano,flat);
+
+var r90 = 90*Math.PI/180;
+
+scene.add(base_flat);
+scene.add(lado1_flat);
+scene.add(lado2_flat);
+scene.add(lado3_flat);
+scene.add(lado4_flat);
+
+base_flat.rotation.set(-r90,0,0);
+lado1_flat.position.set(0,-150,-50);
+lado2_flat.position.set(-50,-150,0);
+lado2_flat.rotation.set(0,r90,0);
+
+lado3_flat.position.set(50,-150,0);
+lado3_flat.rotation.set(0,-r90,0);
+
+lado4_flat.position.set(0,-150,50);
+
+
+
+light2 = new THREE.DirectionalLight( 'white', 2 );
+light2.position.set( 80, 80, 80 );
+scene.add(light2);
+  // Now, show what the camera sees on the screen:
+  renderer.render(scene, camera);
+</script>
